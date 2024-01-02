@@ -25,9 +25,8 @@ coll = conn[DATABASE][COLLECTION]
 new_doc = {"first": "douglas", "last": "adams", "dob": "11/03/1952", "hair_colour": "grey", "occupation": "writer", "nationality": "british"}
 
 coll.insert_one(new_doc)
-"""
-"""
-- Inserts mulitple documents into database:
+
+- Inserts multiple documents into database:
 new_docs = [{
     "first": "terry",
     "last": "pratchet",
@@ -45,20 +44,22 @@ new_docs = [{
 }]
 
 coll.insert_many(new_docs)
-"""
-"""
+
 - Finds specific document:
 documents = coll.find({"first": "douglas"})
 
 - Finds all documents
 documents = coll.find()
-"""
-#NOT WORKING
-#coll.remove({"first": "douglas"})
 
+
+- Deletes single document
+coll.delete_one({"first": "douglas"})
+
+
+- Updates multiple documents
 coll.update_many({"nationality": "american"}, {"$set": {"hair_colour": "maroon"}})
-
-documents = coll.find({"nationality": "american"})
+"""
+documents = coll.find()
 
 for doc in documents:
     print(doc)
